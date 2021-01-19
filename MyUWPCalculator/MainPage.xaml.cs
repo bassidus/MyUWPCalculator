@@ -39,6 +39,8 @@ namespace MyUWPCalculator
         }
 
         private bool newLine = false;
+        private bool startOver = true;
+        private double result = 0;
         private bool textHasChanged = false;
         private bool secondWindowCreated = false;
         private void ButtonClick(object sender, RoutedEventArgs e)
