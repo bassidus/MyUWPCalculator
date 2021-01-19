@@ -32,8 +32,8 @@ namespace MyUWPCalculator
         {
             this.InitializeComponent();
             
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 345));
-            ApplicationView.PreferredLaunchViewSize = new Size(470, 345);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 400));
+            ApplicationView.PreferredLaunchViewSize = new Size(470, 400);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             Window.Current.CoreWindow.Dispatcher.AcceleratorKeyActivated += Dispatcher_AcceleratorKeyActivated;
         }
