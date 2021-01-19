@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MyUWPCalculator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyUWPCalculator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="345" Width="470" HorizontalAlignment="Left" VerticalAlignment="Top" RequestedTheme="Light">
+    <Grid Margin="0,0,0,10">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Text="0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="210" Margin="10,30,0,0" FontSize="24" TextAlignment="Right"/>
+        <Button x:Name="button7" Content="7" Margin="10,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button8" Content="8" Margin="65,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button9" Content="9" Margin="120,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonDiv" Content="/" Margin="175,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonFour" Content="4" Margin="10,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonFive" Content="5" Margin="65,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonSix" Content="6" Margin="120,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonMultiply" Content="x" Margin="175,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonOne" Content="1" Margin="10,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonTwo" Content="2" Margin="65,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonThree" Content="3" Margin="120,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonSubtract" Content="-" Margin="175,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonZero" Content="0" Margin="10,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonComma" Content="," Margin="65,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonEquals" Content="=" Margin="120,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonAdd" Content="+" Margin="175,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <TextBlock x:Name="textBlockHistory" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.223,2.335" Width="213" Margin="6,10,0,0" TextAlignment="Right"/>
+        <Button x:Name="buttonZero_Copy" Content="C°" Margin="10,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonComma_Copy" Content="F°" Margin="65,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonEquals_Copy" Content="BMI" Margin="120,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
+        <Button x:Name="buttonAdd_Copy" Content="&lt;-" Margin="175,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="325" Margin="235,10,0,0" VerticalAlignment="Top" Width="225"/>
+    </Grid>
+</Page>
