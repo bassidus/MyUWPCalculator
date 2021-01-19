@@ -64,20 +64,10 @@ namespace MyUWPCalculator
                     Erase();
                     return;
                 case "°C":
-                    double.TryParse(textBlock.Text, out c);
-                    f = CelsiusToFahrenheit(c);
-                    result = $"{c} °C = {f} °F";
-                    textBlock.Text = result;
-                    listBox.Items.Add(result);
-                    newLine = true;
+                    TempConversion("C");
                     return;
                 case "°F":
-                    double.TryParse(textBlock.Text, out f);
-                    c = FahrenheitToCelsius(f);
-                    result = $"{f} °F = {c} °C";
-                    textBlock.Text = result;
-                    listBox.Items.Add(result);
-                    newLine = true;
+                    TempConversion("F");
                     return;
                 case "BMI": OpenBMI(sender, e);
                     return;
@@ -96,15 +86,31 @@ namespace MyUWPCalculator
             textBlock.Text += button.Content;
         }
 
+        private void TempConversion(string celOrFah)
+        {
+            if (celOrFah != "C" && celOrFah != "F")
+                throw new ArgumentException("celOrFah must be \"C\" or \"F\"");
+
+            double.TryParse(textBlock.Text, out var t);
+            var r = celOrFah == "C"
+                ? CelsiusToFahrenheit(t)
+                : FahrenheitToCelsius(t);
+
+            var res = celOrFah == "C"
+                ? $"{t} °C = {r} °F"
+                : $"{t} °F = {r} °C";
+
+            textBlock.Text = res;
+            listBox.Items.Add(res);
+            newLine = true;
+        }
         private double FahrenheitToCelsius(double f)
         {
-            
             return Math.Round((f - 32) * 5 / 9, 2);
         }
 
         private double CelsiusToFahrenheit(double c)
         {
-            
             return Math.Round(c * 9 / 5 + 32, 2);
         }
 
@@ -119,7 +125,6 @@ namespace MyUWPCalculator
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
                 Window.Current.Activate();
-
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
@@ -213,6 +218,12 @@ namespace MyUWPCalculator
                 case "Back":
                 case "Delete":
                     Erase();
+                    return;
+                case "C":
+                    TempConversion("C");
+                    return;
+                case "F":
+                    TempConversion("F");
                     return;
                 default:
                     break;
