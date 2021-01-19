@@ -45,6 +45,8 @@ namespace MyUWPCalculator
         {
             Button button = sender as Button;
             var btnText = button.Content.ToString();
+            double c, f;
+            string result;
 
             switch (btnText)
             {
@@ -52,13 +54,19 @@ namespace MyUWPCalculator
                 case "-":
                 case "x":
                 case "/":
-                    PreCalculate(btnText);
+                    Calculate(btnText);
                     return;
                 case "=":
-                    Calculate();
+                    Calculate("=");
                     return;
                 case "<-":
                     Erase();
+                    return;
+                case "°C":
+                    TempConversion("C");
+                    return;
+                case "°F":
+                    TempConversion("F");
                     return;
                 case "BMI":
                     {
@@ -78,7 +86,34 @@ namespace MyUWPCalculator
             }
             textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
             textBlock.Text += button.Content;
-            textHasChanged = true;
+        }
+
+        private void TempConversion(string celOrFah)
+        {
+            if (celOrFah != "C" && celOrFah != "F")
+                throw new ArgumentException("celOrFah must be \"C\" or \"F\"");
+
+            double.TryParse(textBlock.Text, out var t);
+            var r = celOrFah == "C"
+                ? CelsiusToFahrenheit(t)
+                : FahrenheitToCelsius(t);
+
+            var res = celOrFah == "C"
+                ? $"{t} °C = {r} °F"
+                : $"{t} °F = {r} °C";
+
+            textBlock.Text = res;
+            listBox.Items.Add(res);
+            newLine = true;
+        }
+        private double FahrenheitToCelsius(double f)
+        {
+            return Math.Round((f - 32) * 5 / 9, 2);
+        }
+
+        private double CelsiusToFahrenheit(double c)
+        {
+            return Math.Round(c * 9 / 5 + 32, 2);
         }
 
         private async void OpenBMI(object sender, object e)
@@ -92,42 +127,55 @@ namespace MyUWPCalculator
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
                 Window.Current.Activate();
-
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
-        private void PreCalculate(string op)
+        private void Calculate(string op)
         {
-            // added a var to shorten down the code a bit on the following lines
-            var tbh = textBlockHistory;
-
-            if (tbh.Text.Length > 1)
-                switch (tbh.Text[tbh.Text.Length - 2])
+            if (startOver)
+            {
+                startOver = false;
+                textBlockHistory.Text = "";
+            }
+            double.TryParse(textBlock.Text, out var value);
+            var text = textBlockHistory.Text;
+            if (!startOver)
+            {
+                if (value == 0 && text == "")
                 {
-                    case '+':
-                    case '-':
-                    case 'x':
-                    case '/':
-                        if (!textHasChanged)
-                        {
-                            tbh.Text = tbh.Text.Substring(0, tbh.Text.Length - 3);
-                            tbh.Text += $" {op} ";
-                            return;
-                        }
-                        break;
-                    default:
-                        break;
+                    result = 0;
+                    text = $"0 { op} ";
                 }
-            newLine = true;
-            textHasChanged = false;
-            tbh.Text += textBlock.Text + $" {op} ";
-        }
-
-        private void Calculate()
-        {
-
+                else if (text == "")
+                {
+                    result = value;
+                    text = $"{ value} { op} ";
+                }
+                else if (value == 0)
+                {
+                    text = text.Substring(0, text.Length - 3) + $" { op} ";
+                }
+                else
+                {
+                    if (text.Substring(text.Length - 2, 1) == "+") result += value;
+                    if (text.Substring(text.Length - 2, 1) == "-") result -= value;
+                    if (text.Substring(text.Length - 2, 1) == "/") result /= value;
+                    if (text.Substring(text.Length - 2, 1) == "x") result *= value;
+                    if (value < 0) text += $"({ value}) { op} ";
+                    else text += $"{ value} { op} ";
+                }
+                if (op == "=")
+                {
+                    text += $"{ result}";
+                    listBox.Items.Add(text);
+                    result = 0;
+                    startOver = true;
+                }
+                textBlock.Text = "";
+                textBlockHistory.Text = text;
+            }
         }
 
         private void Erase()
@@ -153,25 +201,31 @@ namespace MyUWPCalculator
             {
                 case "Add":
                 case "187":
-                    PreCalculate("+");
+                    Calculate("+");
                     return;
                 case "Subtract":
                 case "189":
-                    PreCalculate("-");
+                    Calculate("-");
                     return;
                 case "Multiply":
                 case "191":
-                    PreCalculate("x");
+                    Calculate("x");
                     return;
                 case "Divide":
-                    PreCalculate("/");
+                    Calculate("/");
                     return;
                 case "Enter":
-                    Calculate();
+                    Calculate("=");
                     return;
                 case "Back":
                 case "Delete":
                     Erase();
+                    return;
+                case "C":
+                    TempConversion("C");
+                    return;
+                case "F":
+                    TempConversion("F");
                     return;
                 default:
                     break;
@@ -190,7 +244,6 @@ namespace MyUWPCalculator
                     }
                     textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
                     textBlock.Text += i;
-                    textHasChanged = true;
                 }
             }
         }

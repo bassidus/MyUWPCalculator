@@ -33,5 +33,6 @@
         <Button x:Name="buttonBMI" Content="BMI" Margin="120,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
         <Button x:Name="buttonMarcus" Content="MARCUS" Margin="10,69,0,0" VerticalAlignment="Top" Width="105" Height="49" FontSize="18" Click="ButtonClick"/>
         <Button x:Name="focusButton" Content="Button" Height="39" Margin="105,400,0,0" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="buttonNewton" Content="NEWTON" Margin="120,69,0,0" VerticalAlignment="Top" Width="105" Height="49" FontSize="18" Click="ButtonClick"/>
     </Grid>
 </Page>
