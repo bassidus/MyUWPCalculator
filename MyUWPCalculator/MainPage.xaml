@@ -26,8 +26,8 @@
         <Button x:Name="buttonEquals" Content="=" Margin="120,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <Button x:Name="buttonAdd" Content="+" Margin="175,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <TextBlock x:Name="textBlockHistory" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.223,2.335" Width="213" Margin="6,10,0,0" TextAlignment="Right"/>
-        <Button x:Name="buttonZero_Copy" Content="C°" Margin="10,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonComma_Copy" Content="F°" Margin="65,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonZero_Copy" Content="°C" Margin="10,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonComma_Copy" Content="°F" Margin="65,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <Button x:Name="buttonEquals_Copy" Content="BMI" Margin="120,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
         <Button x:Name="buttonAdd_Copy" Content="&lt;-" Margin="175,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="325" Margin="235,10,0,0" VerticalAlignment="Top" Width="225"/>
