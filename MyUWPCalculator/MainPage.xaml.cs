@@ -29,6 +29,7 @@ namespace MyUWPCalculator
         public MainPage()
         {
             this.InitializeComponent();
+            
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 345));
             ApplicationView.PreferredLaunchViewSize = new Size(470, 345);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -74,8 +75,11 @@ namespace MyUWPCalculator
 
         private void PreCalculate(string op)
         {
-            if (textBlockHistory.Text.Length > 1)
-                switch (textBlockHistory.Text[textBlockHistory.Text.Length - 2])
+            // added a var to shorten down the code a bit on the following lines
+            var tbh = textBlockHistory; 
+
+            if (tbh.Text.Length > 1)
+                switch (tbh.Text[tbh.Text.Length - 2])
                 {
                     case '+':
                     case '-':
@@ -83,8 +87,8 @@ namespace MyUWPCalculator
                     case '/':
                         if (!textHasChanged)
                         {
-                            textBlockHistory.Text = textBlockHistory.Text.Substring(0, textBlockHistory.Text.Length - 3);
-                            textBlockHistory.Text += $" {op} ";
+                            tbh.Text = tbh.Text.Substring(0, tbh.Text.Length - 3);
+                            tbh.Text += $" {op} ";
                             return;
                         }
                         break;
@@ -93,7 +97,7 @@ namespace MyUWPCalculator
                 }
             newLine = true;
             textHasChanged = false;
-            textBlockHistory.Text += textBlock.Text + $" {op} ";
+            tbh.Text += textBlock.Text + $" {op} ";
         }
 
         private void Calculate()
@@ -110,7 +114,7 @@ namespace MyUWPCalculator
         }
         private void Dispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs args)
         {
-            background.Focus(FocusState.Programmatic);
+            focusButton.Focus(FocusState.Programmatic);
             var key = args.VirtualKey.ToString();
             var shift = Window.Current.CoreWindow.GetKeyState(VirtualKey.Shift);
 
