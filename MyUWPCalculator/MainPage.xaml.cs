@@ -53,6 +53,9 @@ namespace MyUWPCalculator
                 case "=":
                     Calculate();
                     return;
+                case "<-":
+                    Erase();
+                    return;
                 default:
                     break;
             }
@@ -98,8 +101,16 @@ namespace MyUWPCalculator
 
         }
 
+        private void Erase()
+        {
+            if (textBlock.Text.Length > 1)
+                textBlock.Text = textBlock.Text.Substring(0, textBlock.Text.Length - 1);
+            else
+                textBlock.Text = "0";
+        }
         private void Dispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs args)
         {
+            background.Focus(FocusState.Programmatic);
             var key = args.VirtualKey.ToString();
             var shift = Window.Current.CoreWindow.GetKeyState(VirtualKey.Shift);
 
@@ -127,7 +138,11 @@ namespace MyUWPCalculator
                     PreCalculate("/");
                     return;
                 case "Enter":
-                    textBlock.Text = key;
+                    Calculate();
+                    return;
+                case "Back":
+                case "Delete":
+                    Erase();
                     return;
                 default:
                     break;
