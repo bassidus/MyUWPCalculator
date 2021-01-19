@@ -40,14 +40,15 @@ namespace MyUWPCalculator
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
+            var btnText = button.Content.ToString();
 
-            switch (button.Content)
+            switch (btnText)
             {
                 case "+":
                 case "-":
-                case "*":
+                case "x":
                 case "/":
-                    PreCalculate(button.Content.ToString());
+                    PreCalculate(btnText);
                     return;
                 case "=":
                     Calculate();
@@ -75,7 +76,7 @@ namespace MyUWPCalculator
                 {
                     case '+':
                     case '-':
-                    case '*':
+                    case 'x':
                     case '/':
                         if (!textHasChanged)
                         {
@@ -120,7 +121,7 @@ namespace MyUWPCalculator
                     return;
                 case "Multiply":
                 case "191":
-                    PreCalculate("*");
+                    PreCalculate("x");
                     return;
                 case "Divide":
                     PreCalculate("/");
