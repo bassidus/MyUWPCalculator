@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
+using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -59,6 +61,8 @@ namespace MyUWPCalculator
                 case "<-":
                     Erase();
                     return;
+                case "BMI": OpenBMI(sender, e);
+                    return;
                 default:
                     break;
             }
@@ -73,6 +77,23 @@ namespace MyUWPCalculator
             textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
             textBlock.Text += button.Content;
             textHasChanged = true;
+        }
+
+        private async void OpenBMI(object sender, object e)
+        {
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(BMI), null);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
         private void PreCalculate(string op)

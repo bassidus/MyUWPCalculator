@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="MyUWPCalculator.BMI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyUWPCalculator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="250" Height="200">
+
+    <Grid Width="250" Height="200">
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Text="Body Mass Index" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="200" FontSize="20" TextAlignment="Center"/>
+        <TextBox x:Name="weight" HorizontalAlignment="Center" Margin="0,100,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" PlaceholderText="Weight (kg)" Width="200" FontSize="14"/>
+        <TextBox x:Name="height" HorizontalAlignment="Center" Margin="0,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.43,-0.594" PlaceholderText="Height (cm)" Width="200" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" Text="Input values to calculate BMI" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.267,-0.105" Width="200" FontSize="14"/>
+
+    </Grid>
+</Page>
