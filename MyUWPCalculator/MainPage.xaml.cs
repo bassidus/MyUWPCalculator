@@ -39,9 +39,9 @@ namespace MyUWPCalculator
         }
 
         private bool newLine = false;
-        private bool textHasChanged = false;
         private bool startOver = true;
         private double result = 0;
+
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -76,7 +76,6 @@ namespace MyUWPCalculator
             }
             textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
             textBlock.Text += button.Content;
-            textHasChanged = true;
         }
 
         private async void OpenBMI(object sender, object e)
@@ -95,36 +94,6 @@ namespace MyUWPCalculator
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
-
-        private void PreCalculate(string op)
-        {
-            // added some vars to shorten down the code a bit on the following lines
-            var tbh = textBlockHistory;
-            var lastChar = tbh.Text.Length - 2;
-
-            if (tbh.Text.Length > 1)
-                switch (tbh.Text[lastChar])
-                {
-                    case '+':
-                    case '-':
-                    case 'x':
-                    case '/':
-                        if (!textHasChanged)
-                        {
-                            tbh.Text = tbh.Text.Substring(0, lastChar - 1);
-                            tbh.Text += $" {op} ";
-                            return;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            newLine = true;
-            textHasChanged = false;
-            tbh.Text += textBlock.Text + $" {op} ";
-        }
-
-        //private bool IsNan(string s) => !double.TryParse(s, out _);
 
         private void Calculate(string op)
         {
@@ -231,7 +200,6 @@ namespace MyUWPCalculator
                     }
                     textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
                     textBlock.Text += i;
-                    textHasChanged = true;
                 }
             }
         }
