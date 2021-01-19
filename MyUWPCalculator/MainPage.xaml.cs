@@ -46,6 +46,8 @@ namespace MyUWPCalculator
         {
             Button button = sender as Button;
             var btnText = button.Content.ToString();
+            double c, f;
+            string result;
 
             switch (btnText)
             {
@@ -83,6 +85,7 @@ namespace MyUWPCalculator
             textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
             textBlock.Text += button.Content;
         }
+
         private void TempConversion(string celOrFah)
         {
             if (celOrFah != "C" && celOrFah != "F")
@@ -122,7 +125,6 @@ namespace MyUWPCalculator
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
                 Window.Current.Activate();
-
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
