@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="345" Width="470" HorizontalAlignment="Left" VerticalAlignment="Top" RequestedTheme="Light">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="347" Width="470" HorizontalAlignment="Left" VerticalAlignment="Top" RequestedTheme="Light">
     <Grid Margin="0,0,0,10">
         <TextBlock x:Name="textBlockHistory" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.223,2.335" Width="213" Margin="6,10,0,0" TextAlignment="Right"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Text="0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="210" Margin="10,30,0,0" FontSize="24" TextAlignment="Right"/>
@@ -31,5 +31,6 @@
         <Button x:Name="buttonCelsius" Content="°C" Margin="10,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <Button x:Name="buttonFahrenheit" Content="°F" Margin="65,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
         <Button x:Name="buttonBMI" Content="BMI" Margin="120,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
+        <Button x:Name="focusButton" Content="Button" Height="39" Margin="105,376,0,0" VerticalAlignment="Top" Width="80"/>
     </Grid>
 </Page>
