@@ -32,8 +32,8 @@ namespace MyUWPCalculator
         {
             this.InitializeComponent();
 
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 345));
-            ApplicationView.PreferredLaunchViewSize = new Size(470, 345);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 400));
+            ApplicationView.PreferredLaunchViewSize = new Size(470, 400);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             Window.Current.CoreWindow.Dispatcher.AcceleratorKeyActivated += Dispatcher_AcceleratorKeyActivated;
         }
@@ -46,6 +46,8 @@ namespace MyUWPCalculator
         {
             Button button = sender as Button;
             var btnText = button.Content.ToString();
+            double c, f;
+            string result;
 
             switch (btnText)
             {
@@ -60,6 +62,22 @@ namespace MyUWPCalculator
                     return;
                 case "<-":
                     Erase();
+                    return;
+                case "°C":
+                    double.TryParse(textBlock.Text, out c);
+                    f = CelsiusToFahrenheit(c);
+                    result = $"{c} °C = {f} °F";
+                    textBlock.Text = result;
+                    listBox.Items.Add(result);
+                    newLine = true;
+                    return;
+                case "°F":
+                    double.TryParse(textBlock.Text, out f);
+                    c = FahrenheitToCelsius(f);
+                    result = $"{f} °F = {c} °C";
+                    textBlock.Text = result;
+                    listBox.Items.Add(result);
+                    newLine = true;
                     return;
                 case "BMI": OpenBMI(sender, e);
                     return;
@@ -76,6 +94,18 @@ namespace MyUWPCalculator
             }
             textBlock.Text = textBlock.Text == "0" ? "" : textBlock.Text;
             textBlock.Text += button.Content;
+        }
+
+        private double FahrenheitToCelsius(double f)
+        {
+            
+            return Math.Round((f - 32) * 5 / 9, 2);
+        }
+
+        private double CelsiusToFahrenheit(double c)
+        {
+            
+            return Math.Round(c * 9 / 5 + 32, 2);
         }
 
         private async void OpenBMI(object sender, object e)
@@ -132,6 +162,7 @@ namespace MyUWPCalculator
                 if (op == "=")
                 {
                     text += $"{ result}";
+                    listBox.Items.Add(text);
                     result = 0;
                     startOver = true;
                 }
