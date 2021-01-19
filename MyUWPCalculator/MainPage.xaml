@@ -6,31 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="347" Width="470" HorizontalAlignment="Left" VerticalAlignment="Top" RequestedTheme="Light">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="400" Width="470" HorizontalAlignment="Left" VerticalAlignment="Top" RequestedTheme="Light">
     <Grid Margin="0,0,0,10">
         <TextBlock x:Name="textBlockHistory" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.223,2.335" Width="213" Margin="6,10,0,0" TextAlignment="Right"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Text="0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="210" Margin="10,30,0,0" FontSize="24" TextAlignment="Right"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="325" Margin="235,10,0,0" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="button1" Content="1" Margin="10,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button2" Content="2" Margin="65,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button3" Content="3" Margin="120,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button4" Content="4" Margin="10,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button5" Content="5" Margin="65,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button6" Content="6" Margin="120,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button7" Content="7" Margin="10,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button8" Content="8" Margin="65,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button9" Content="9" Margin="120,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="button0" Content="0" Margin="10,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonErase" Content="&lt;-" Margin="175,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonDiv" Content="/" Margin="175,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonMultiply" Content="x" Margin="175,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonSubtract" Content="-" Margin="175,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonAdd" Content="+" Margin="175,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonComma" Content="," Margin="65,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonEquals" Content="=" Margin="120,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonCelsius" Content="°C" Margin="10,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonFahrenheit" Content="°F" Margin="65,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
-        <Button x:Name="buttonBMI" Content="BMI" Margin="120,69,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
-        <Button x:Name="focusButton" Content="Button" Height="39" Margin="105,376,0,0" VerticalAlignment="Top" Width="80"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="379" Margin="235,10,0,0" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="button1" Content="1" Margin="10,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button2" Content="2" Margin="65,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button3" Content="3" Margin="120,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button4" Content="4" Margin="10,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button5" Content="5" Margin="65,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button6" Content="6" Margin="120,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button7" Content="7" Margin="10,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button8" Content="8" Margin="65,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button9" Content="9" Margin="120,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="button0" Content="0" Margin="10,339,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonErase" Content="&lt;-" Margin="175,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonDiv" Content="/" Margin="175,177,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonMultiply" Content="x" Margin="175,231,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonSubtract" Content="-" Margin="175,285,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonAdd" Content="+" Margin="175,339,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonComma" Content="," Margin="65,339,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonEquals" Content="=" Margin="120,339,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonCelsius" Content="°C" Margin="10,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonFahrenheit" Content="°F" Margin="65,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="24" Click="ButtonClick"/>
+        <Button x:Name="buttonBMI" Content="BMI" Margin="120,123,0,0" VerticalAlignment="Top" Width="50" Height="49" FontSize="18" Click="ButtonClick"/>
+        <Button x:Name="buttonMarcus" Content="MARCUS" Margin="10,69,0,0" VerticalAlignment="Top" Width="105" Height="49" FontSize="18" Click="ButtonClick"/>
+        <Button x:Name="focusButton" Content="Button" Height="39" Margin="105,400,0,0" VerticalAlignment="Top" Width="80"/>
     </Grid>
 </Page>
