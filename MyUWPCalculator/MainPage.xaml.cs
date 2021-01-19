@@ -29,7 +29,7 @@ namespace MyUWPCalculator
         public MainPage()
         {
             this.InitializeComponent();
-            
+
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 345));
             ApplicationView.PreferredLaunchViewSize = new Size(470, 345);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -38,6 +38,8 @@ namespace MyUWPCalculator
 
         private bool newLine = false;
         private bool textHasChanged = false;
+        private bool startOver = true;
+        private double result = 0;
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -49,10 +51,10 @@ namespace MyUWPCalculator
                 case "-":
                 case "x":
                 case "/":
-                    PreCalculate(btnText);
+                    Calculate(btnText);
                     return;
                 case "=":
-                    Calculate();
+                    Calculate("=");
                     return;
                 case "<-":
                     Erase();
@@ -75,11 +77,12 @@ namespace MyUWPCalculator
 
         private void PreCalculate(string op)
         {
-            // added a var to shorten down the code a bit on the following lines
-            var tbh = textBlockHistory; 
+            // added some vars to shorten down the code a bit on the following lines
+            var tbh = textBlockHistory;
+            var lastChar = tbh.Text.Length - 2;
 
             if (tbh.Text.Length > 1)
-                switch (tbh.Text[tbh.Text.Length - 2])
+                switch (tbh.Text[lastChar])
                 {
                     case '+':
                     case '-':
@@ -87,7 +90,7 @@ namespace MyUWPCalculator
                     case '/':
                         if (!textHasChanged)
                         {
-                            tbh.Text = tbh.Text.Substring(0, tbh.Text.Length - 3);
+                            tbh.Text = tbh.Text.Substring(0, lastChar - 1);
                             tbh.Text += $" {op} ";
                             return;
                         }
@@ -100,9 +103,51 @@ namespace MyUWPCalculator
             tbh.Text += textBlock.Text + $" {op} ";
         }
 
-        private void Calculate()
-        {
+        //private bool IsNan(string s) => !double.TryParse(s, out _);
 
+        private void Calculate(string op)
+        {
+            if (startOver)
+            {
+                startOver = false;
+                textBlockHistory.Text = "";
+            }
+            double.TryParse(textBlock.Text, out var value);
+            var text = textBlockHistory.Text;
+            if (!startOver)
+            {
+                if (value == 0 && text == "")
+                {
+                    result = 0;
+                    text = $"0 { op} ";
+                }
+                else if (text == "")
+                {
+                    result = value;
+                    text = $"{ value} { op} ";
+                }
+                else if (value == 0)
+                {
+                    text = text.Substring(0, text.Length - 3) + $" { op} ";
+                }
+                else
+                {
+                    if (text.Substring(text.Length - 2, 1) == "+") result += value;
+                    if (text.Substring(text.Length - 2, 1) == "-") result -= value;
+                    if (text.Substring(text.Length - 2, 1) == "/") result /= value;
+                    if (text.Substring(text.Length - 2, 1) == "x") result *= value;
+                    if (value < 0) text += $"({ value}) { op} ";
+                    else text += $"{ value} { op} ";
+                }
+                if (op == "=")
+                {
+                    text += $"{ result}";
+                    result = 0;
+                    startOver = true;
+                }
+                textBlock.Text = "";
+                textBlockHistory.Text = text;
+            }
         }
 
         private void Erase()
@@ -128,21 +173,21 @@ namespace MyUWPCalculator
             {
                 case "Add":
                 case "187":
-                    PreCalculate("+");
+                    Calculate("+");
                     return;
                 case "Subtract":
                 case "189":
-                    PreCalculate("-");
+                    Calculate("-");
                     return;
                 case "Multiply":
                 case "191":
-                    PreCalculate("x");
+                    Calculate("x");
                     return;
                 case "Divide":
-                    PreCalculate("/");
+                    Calculate("/");
                     return;
                 case "Enter":
-                    Calculate();
+                    Calculate("=");
                     return;
                 case "Back":
                 case "Delete":
