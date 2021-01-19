@@ -31,7 +31,7 @@ namespace MyUWPCalculator
         public MainPage()
         {
             this.InitializeComponent();
-            
+
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(470, 400));
             ApplicationView.PreferredLaunchViewSize = new Size(470, 400);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
@@ -40,6 +40,7 @@ namespace MyUWPCalculator
 
         private bool newLine = false;
         private bool textHasChanged = false;
+        private bool secondWindowCreated = false;
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -59,7 +60,10 @@ namespace MyUWPCalculator
                 case "<-":
                     Erase();
                     return;
-                case "BMI": OpenBMI(sender, e);
+                case "BMI":
+                    {
+                        if (!secondWindowCreated) { OpenBMI(sender, e); secondWindowCreated = true; }
+                    }
                     return;
                 default:
                     break;
@@ -97,7 +101,7 @@ namespace MyUWPCalculator
         private void PreCalculate(string op)
         {
             // added a var to shorten down the code a bit on the following lines
-            var tbh = textBlockHistory; 
+            var tbh = textBlockHistory;
 
             if (tbh.Text.Length > 1)
                 switch (tbh.Text[tbh.Text.Length - 2])
